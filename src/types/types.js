@@ -7,6 +7,11 @@
 //     reset:'[Counter] reset counter',
 // }
 
+// export const types = {
+//     agregar: 'agregar'
+// }
+
 export const types = {
-    agregar: 'agregar'
+    agregar: '[CITAS] add',
+    borrar: '[CITAS] remove'
 }

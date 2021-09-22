@@ -7,6 +7,7 @@ const Producto = () => {
     const [ formValue, handleInputChange, reset ] = useForm({
         nombre: ''
     })
+    
     const {nombre} = formValue;
     const dispatch = useDispatch();
 
