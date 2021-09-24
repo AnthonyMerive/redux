@@ -11,7 +11,14 @@
 //     agregar: 'agregar'
 // }
 
+//ejercicio 2:
+
+// export const types = {
+//     agregar: '[CITAS] add',
+//     borrar: '[CITAS] remove'
+// }
+
 export const types = {
-    agregar: '[CITAS] add',
-    borrar: '[CITAS] remove'
+    login: 'Login',
+    register: 'register'
 }

@@ -1,4 +1,6 @@
-html {
+/*ejercicio 2:
+
+/* html {
     min-height: 100%;
   }
   body {
@@ -16,4 +18,28 @@ html {
   }
   header h1 {
     color: white;
-  }
+  } */
+
+#formBasicName {
+  width: 20vw;
+}
+
+#formBasicEmail {
+  width: 20vw;
+}
+
+#formBasicPassword {
+  width: 20vw;
+}
+
+#formBasicRepitPassword {
+  width: 20vw;
+}
+
+Form {
+  margin-left: 40%;
+}
+
+.google-btn{
+  cursor: pointer;
+}
