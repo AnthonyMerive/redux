@@ -21,12 +21,12 @@ let auth;
 auth=true;
 
 
-const PrivateRoutes = ({component:Counter, ...rest}) => {
+const PrivateRoutes = ({component:Task, ...rest}) => {
     return (
 
     <Route {...rest}>
         {auth? 
-           <Counter/> 
+           <Task/> 
         :
         <Redirect to="/login" />
         }
