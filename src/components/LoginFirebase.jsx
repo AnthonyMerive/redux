@@ -5,7 +5,7 @@ import {useForm} from '../hooks/useForm'
 import {useDispatch} from 'react-redux'
 import {loginEmailPassword, loginGoogle} from '../actions/actionLogin'
 
-export default function LoginFirebase() {
+export default function LoginFirebase({history}) {
 
     const dispatch = useDispatch();
 
@@ -20,10 +20,12 @@ export default function LoginFirebase() {
         e.preventDefault();
         dispatch(loginEmailPassword(email,password))
         reset();
+        history.replace('/');
     }
     
     const handleGoogle = () => {
         dispatch(loginGoogle(email,password))
+        history.replace('/');
     }
     
 
@@ -65,7 +67,7 @@ export default function LoginFirebase() {
                     </Container>
                 </Container>
             </Container>
-            <Link to="/registro">Registrarse</Link>
+            <Link to="/register">Registrarse</Link>
 
         </Form>
 

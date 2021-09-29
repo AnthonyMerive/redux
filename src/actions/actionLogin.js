@@ -1,5 +1,5 @@
 import { types } from '../types/types'
-import { getAuth, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithPopup, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { googleAuth } from '../firebase/firebaseConfig'
 
 //autenticacion google
@@ -49,3 +49,24 @@ export const loginSincrono = (id, displayname) => {
         }
     }
 }
+
+export const logout = () => {
+    
+    return(dispatch) => {
+        signOut(auth)
+        .then(user=>{
+            dispatch(logoutSincrono())
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+    }
+}
+
+export const logoutSincrono = () => {
+    return{
+        type: types.logout
+    }
+}
+
+

@@ -20,5 +20,10 @@
 
 export const types = {
     login: 'Login',
-    register: 'register'
+    register: 'register',
+    logout: 'logout'
+}
+
+export const typesEstudiantes = {
+    register: 'nuevo estudiante'
 }
