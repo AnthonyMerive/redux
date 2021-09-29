@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { registerEstudiante } from '../actions/actionEstudiante';
 import { logout } from '../actions/actionLogin'
@@ -8,6 +8,7 @@ import { useForm } from '../hooks/useForm';
 
 export default function Estudiantes({ history }) {
 
+    const [imgUrl, setImgUrl] = useState('')
     const dispatch = useDispatch();
 
     const [values, handleInputChange, reset] = useForm({
@@ -25,16 +26,18 @@ export default function Estudiantes({ history }) {
 
     const handlePictureClick = () => {
         document.getElementById('fileSelector').click();
+
     }
 
     const handleFileChanged = (e) => {
         const file = e.target.files[0];
         fileUpload(file)
             .then(resp => {
-                imagen = resp;
+                setImgUrl(resp);
                 console.log(resp)
             })
             .catch(error => {
+                setImgUrl('Vuelva a cargar la imagen');
                 console.log(error)
             })
     }
@@ -49,8 +52,9 @@ export default function Estudiantes({ history }) {
             celular,
             direccion,
             correo,
-            imagen))
-            reset();
+            imgUrl))
+        reset();
+        setImgUrl('');
     }
 
 
@@ -141,6 +145,7 @@ export default function Estudiantes({ history }) {
                         id="correo" />
                 </div>
                 <br />
+
                 <div className="form-group col-md-4">
                     <input
                         id="fileSelector"
@@ -150,12 +155,26 @@ export default function Estudiantes({ history }) {
                         style={{ display: 'none' }}
                         onChange={handleFileChanged}
                     />
+                </div>
+
+                <div className="form-group d-inline-flex">
+                    <div className="form-group ">
+                        <label htmlFor="url">Foto de perfil</label>
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="url"
+                            id="url"
+                            value={imgUrl}
+                            disabled
+                        />
+                    </div>
 
                     <button
-                        className="btn btn-success"
+                        className="btn-sm btn-info ms-1 p-2 "
                         onClick={handlePictureClick}
                         type="button"
-                    >Imagen</button>
+                    >📸</button>
                 </div>
 
                 <div>
