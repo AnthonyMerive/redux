@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { registerEstudiante } from '../actions/actionEstudiante';
+import { registerEstudiante, listarAsincronico } from '../actions/actionEstudiante';
 import { logout } from '../actions/actionLogin'
 import { fileUpload } from '../helpers/fileUpload';
 import { useForm } from '../hooks/useForm';
-
+import {ListarEstudiante} from './ListarEstudiante'
 
 export default function Estudiantes({ history }) {
 
     const [imgUrl, setImgUrl] = useState('')
     const dispatch = useDispatch();
+    const [guardar, setGuardar] = useState(false)
 
     const [values, handleInputChange, reset] = useForm({
         documento: '',
@@ -55,8 +56,8 @@ export default function Estudiantes({ history }) {
             imgUrl))
         reset();
         setImgUrl('');
+        setGuardar(true)
     }
-
 
 
     const handleLogout = () => {
@@ -64,6 +65,10 @@ export default function Estudiantes({ history }) {
         history.replace('/login')
     }
 
+    useEffect(() => {
+        setGuardar(false)
+        dispatch(listarAsincronico())
+    }, [dispatch, guardar])
 
     return (<>
         <form onSubmit={handleRegistro}>
@@ -191,6 +196,11 @@ export default function Estudiantes({ history }) {
                 </div>
 
             </div>
+
         </form>
+        <br />
+        <hr />
+        <br />
+        <ListarEstudiante />
     </>)
 }

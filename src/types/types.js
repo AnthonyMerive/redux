@@ -25,5 +25,7 @@ export const types = {
 }
 
 export const typesEstudiantes = {
-    register: 'nuevo estudiante'
+    // register: 'nuevo estudiante',
+    listar: 'listar estudiante',
+    eliminar: 'elimino estudiante'
 }
